@@ -2,7 +2,7 @@
     text-align: center;
 }
 
-.tooltip {
+#tooltip {
     position: absolute;
     pointer-events: none;
 
