@@ -7,6 +7,7 @@ const padding = 50;
 // Tooltip
 const tooltip = d3.select('body').append('div')
     .attr('id', 'tooltip')
+    .attr('class', 'card')
     .style('opacity', 0);
 
 const drawGraph = () => {
