@@ -2,9 +2,15 @@
     box-shadow: 4px 4px 16px 0px rgba(0,0,0,0.75);
 }
 
-body {
+body, html {
     background: #dbdbdb;
     margin: 0;
+    height: 100%;
+}
+
+h1 {
+    margin: 0;
+    padding: 45px 0;
 }
 
 .svg-wrap {
@@ -36,4 +42,16 @@ svg {
     opacity: 0;
 
     margin-left: 20px;
+}
+
+.tooltip-name {
+    font-size: 20px;
+}
+.tooltip-time {
+    font-style: italic;
+    font-size: 18px;
+}
+.tooltip-place {
+    font-weight: bold;
+    font-size: 22px;
 }

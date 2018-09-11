@@ -60,17 +60,20 @@ const drawGraph = () => {
                     .duration(200)
                     .style('opacity', 1);
                 tooltip.html(`
-                    <div><strong>${d.Name}</strong></div>
-                    <div>${d.Time}</div>
-                    <div>${d3.event.pageX}, ${d3.event.pageY}</div>
-                    <pre>${~~(d.Seconds / 60)}</pre>
+                    <div class="tooltip-name"><strong>${d.Name}</strong></div><br>
+                    <div class="tooltip-time">${d.Time}</div><br>
+                    <div class="tooltip-place">#${d.Place}</div>
                 `)
-                    .style('left', `${d3.event.pageX}px`)
-                    // TODO: to the left
-                    // .style('left', `${d3.event.pageX + ( (w-160-20-d3.event.pageX)>0 ? 20 : -180      )}px`)
-                    // .style('right', `${d3.event.pageX}px`)
                     .style('top', `${d3.event.pageY}px`)
                     .attr('data-year', a[i].dataset.xvalue);
+
+                    if(d3.event.pageX + tooltip._groups[0][0].offsetWidth > w + parseFloat(window.getComputedStyle(document.getElementsByTagName('svg')[0]).marginLeft)) {
+                        tooltip._groups[0][0].style.removeProperty('left');
+                        tooltip.style('right', `${document.body.clientWidth - d3.event.pageX + 15}px`);
+                    } else {
+                        tooltip._groups[0][0].style.removeProperty('right');
+                        tooltip.style('left', `${d3.event.pageX}px`);
+                    }
                 })
             .on('mouseout', d => {
                 tooltip.transition()
