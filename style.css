@@ -8,11 +8,6 @@ body, html {
     height: 100%;
 }
 
-h1 {
-    margin: 0;
-    padding: 45px 0;
-}
-
 .svg-wrap {
     padding: 15px;
     position: relative;
@@ -28,6 +23,8 @@ svg {
 }
 
 #title {
+    margin: 0;
+    padding: 45px 0;
     text-align: center;
 }
 
