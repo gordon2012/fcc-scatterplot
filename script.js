@@ -98,7 +98,7 @@ const drawGraph = () => {
             .attr('cx', d => xScale(d.Year))
             .attr('cy', d => yScale(d3.timeParse('%M:%S')(d.Time)))
             .attr('r', 5)
-            .attr('fill', 'red')
+            .attr('fill', d => d.Doping.length > 0 ? 'red' : 'green')
             .on('mouseover', (d,i,a) => {
                 tooltip.transition()
                     .duration(200)
@@ -107,6 +107,7 @@ const drawGraph = () => {
                     <div class="tooltip-name"><strong>${d.Name}</strong></div><br>
                     <div class="tooltip-time">${d.Time}</div><br>
                     <div class="tooltip-place">#${d.Place}</div>
+                    ${d.Doping.length > 0 ? `<br><p>${d.Doping}</p>` : ''}
                 `)
                     .style('top', `${d3.event.pageY}px`)
                     .attr('data-year', a[i].dataset.xvalue);
@@ -127,6 +128,20 @@ const drawGraph = () => {
             .attr('class', 'dot')
             .attr('data-xvalue', d => d.Year)
             .attr('data-yvalue', d => d3.timeParse('%M:%S')(d.Time));
+
+    // Legend
+    var legendScale = d3.scaleOrdinal()
+        .domain(['Doping', 'No Doping'])
+        .range(['red', 'green'])
+    svg.append('g')
+        .attr('id', 'legend')
+        .attr('transform', `translate(${w - 150}, ${h - 125})`);
+    var legend = d3.legendColor()
+        .shape('path', d3.symbol().type(d3.symbolSquare).size(150)())
+        .shapePadding(10)
+        .scale(legendScale);
+    svg.select('#legend')
+        .call(legend);
 };
 
 const req = new XMLHttpRequest();
