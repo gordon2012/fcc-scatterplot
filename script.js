@@ -75,6 +75,7 @@ const drawGraph = () => {
         .attr('id', 'x-axis')
         .call(xAxis);
 
+    // y axis
     const yScale = d3.scaleTime()
         .domain(d3.extent(data.map(d => d3.timeParse('%M:%S')(d.Time))))
         .range([h - padding, padding]);
