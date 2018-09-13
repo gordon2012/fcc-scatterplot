@@ -75,15 +75,13 @@ const drawGraph = () => {
         .attr('id', 'x-axis')
         .call(xAxis);
 
-    // y axis
-    const parsedTime = data.map(d => d3.timeParse('%M:%S')(d.Time));
     const yScale = d3.scaleTime()
-        .domain(d3.extent(parsedTime))
+        .domain(d3.extent(data.map(d => d3.timeParse('%M:%S')(d.Time))))
         .range([h - padding, padding]);
 
     const yAxis = d3.axisLeft(yScale)
-        .tickValues(parsedTime)
-        .tickFormat((d,i) => data[i].Time);
+        .ticks(d3.timeSecond, 15)
+        .tickFormat(d3.timeFormat('%M:%S'));
 
     svg.append('g')
         .attr('transform', `translate(${padding}, 0)`)
