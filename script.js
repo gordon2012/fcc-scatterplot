@@ -99,15 +99,16 @@ const drawGraph = () => {
             .attr('cy', d => yScale(d3.timeParse('%M:%S')(d.Time)))
             .attr('r', 5)
             .attr('fill', d => d.Doping.length > 0 ? 'red' : 'green')
+            // Tooltip
             .on('mouseover', (d,i,a) => {
                 tooltip.transition()
                     .duration(200)
                     .style('opacity', 1);
                 tooltip.html(`
-                    <div class="tooltip-name"><strong>${d.Name}</strong></div><br>
-                    <div class="tooltip-time">${d.Time}</div><br>
                     <div class="tooltip-place">#${d.Place}</div>
-                    ${d.Doping.length > 0 ? `<br><p>${d.Doping}</p>` : ''}
+                    <div class="tooltip-name"><strong>${d.Name}</strong></div>
+                    <div class="tooltip-time">${d.Time}</div>
+                    ${d.Doping.length > 0 ? `<p class="tooltip-doping">${d.Doping}</p>` : ''}
                 `)
                     .style('top', `${d3.event.pageY}px`)
                     .attr('data-year', a[i].dataset.xvalue);
@@ -117,7 +118,7 @@ const drawGraph = () => {
                         tooltip.style('right', `${document.body.clientWidth - d3.event.pageX + 15}px`);
                     } else {
                         tooltip._groups[0][0].style.removeProperty('right');
-                        tooltip.style('left', `${d3.event.pageX}px`);
+                        tooltip.style('left', `${d3.event.pageX + 15}px`);
                     }
                 })
             .on('mouseout', d => {

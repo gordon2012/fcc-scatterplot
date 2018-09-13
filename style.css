@@ -6,6 +6,7 @@ body, html {
     background: #dbdbdb;
     margin: 0;
     height: 100%;
+    font-family: Lato, Helvetica, 'sans-serif';
 }
 
 .svg-wrap {
@@ -38,17 +39,24 @@ svg {
 
     opacity: 0;
 
-    margin-left: 20px;
+    max-width: 200px;
+
+    /* margin-left: 20px; */
 }
 
+.tooltip-place {
+    font-weight: bold;
+    font-size: 22px;
+}
 .tooltip-name {
     font-size: 20px;
+    margin: 5px 0;
 }
 .tooltip-time {
     font-style: italic;
     font-size: 18px;
 }
-.tooltip-place {
-    font-weight: bold;
-    font-size: 22px;
+.tooltip-doping {
+    font-size: 0.9em;
+    margin-bottom: 5px;
 }
