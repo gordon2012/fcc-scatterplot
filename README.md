@@ -4,6 +4,6 @@
 
 ### A freeCodeCamp Data Visualization Project
 
-<http://scatterplot.gordonscampinggear.com/>
+<https://scatterplot.gordonscampinggear.com>
 
-![Scatter Plot](http://gordonscampinggear.com/img/scatterplot.png)
+![Scatter Plot](https://gordonscampinggear.com/img/scatterplot.png)
